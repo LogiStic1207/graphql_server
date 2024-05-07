@@ -1,6 +1,5 @@
 const kutimeData = require('../exported2.json');
-//const qaDict = require('../qaDictionary.json');
-//const test = require('../test.json');
+const test = require('../qnaDictionary.json');
 
 const majorCategories = kutimeData.department.map((category) => ({
   id: category.code,
@@ -18,13 +17,6 @@ const otherCategories = kutimeData.additional.map((category) => ({
 
 const mergedCategories = [...majorCategories, ...otherCategories];
 
-/*
-const qaIntents = test.intent.map((intent) => ({
-  ner: intent.ner,
-  answer: intent.ner[0],
-  image: intent.ner[1]
-}));
-*/
 const resolvers = {
     Query: {
       categories: () => {
@@ -40,7 +32,7 @@ const resolvers = {
   
         return filteredCourseIds.map(courseId => {
           const course = kutimeData.lecture.list[courseId];
-          console.log(courseIds);
+          console.log(filteredCourseIds);
           return {
             id: course[0],
             name: course[1],
@@ -59,23 +51,14 @@ const resolvers = {
           };
         });
       },
-      /*
+      
       answer: (parent, { intent, ner }) => {
-        //const intent = qaIntents.find(intent => intentName === intent.name);
-        //let filteredNers = intent ? intent.ners : [];
-
-        // if(ner.length > 0) {
-        //   filteredNers = filteredNers.filter(ner => ners.includes(ner));
-        // }
-        let filteredNers = qaDict[intent]
-        return filteredNers.map(ner => {
-          const single_ner = filteredNers[ner];
-          return {
-            answer: single_ner[1],
-
-          };
-        });
-      }*/
+        let answerList = test.anwser[intent][ner];
+        return {
+          answer:answerList[0],
+          image:answerList[1]
+        }
+      }
     }
   };
 export default resolvers;
