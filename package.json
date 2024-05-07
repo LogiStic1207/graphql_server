@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "getCoureses API with Graphql",
   "main": "index.js",
-  "repository": "https://github.com/LogiStic1207/graphql_server",
+  "repository": "ihttps://github.com/LogiStic1207/graphql_server",
   "author": "mjkim0928",
   "license": "MIT",
   "dependencies": {

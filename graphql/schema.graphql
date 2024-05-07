@@ -1,6 +1,7 @@
 type Query{
     categories: [Category]
     courses(categoryId: String, courseIds: [String!]): [Course]
+    answer(intent: String!, ner: String!): [Answer]
 }
 type Category {
 id: ID!
@@ -23,4 +24,8 @@ place: String
 creditDetail: String
 limit: String
 timeData: String
+}
+type Answer {
+    answer: String
+    image: String
 }
